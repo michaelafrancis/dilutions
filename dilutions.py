@@ -22,13 +22,13 @@ if assay == 'Y42':
 
     # Step 2 Dilution  
     step2_dilution_factor = (int(dilution_factor)/int(step1_dilution_factor))/2
-    print(F"step2 dilution factor = {step2_dilution_factor}, {dilution_factor}/{step1_dilution_factor}")
+
 
     vol_prev_dilution = int(total_volume)/int(step2_dilution_factor)
-    print(F" vol_prev_dilution = {vol_prev_dilution}, {total_volume}/{step2_dilution_factor}")
+
 
     vol_diluent = int(total_volume) - int(vol_prev_dilution)
-    print(F"vol_diluent = {vol_diluent}, {total_volume, vol_prev_dilution}")
+
 
     instruction = "1/{}: {}uL prev. dilution + {}uL a.d.".format(step2_dilution_factor, int(total_volume)/int(step2_dilution_factor), int(total_volume) - int(vol_prev_dilution))
     dilution_scheme.append((vol_prev_dilution, vol_diluent, instruction))
@@ -67,20 +67,22 @@ elif assay == 'Y77':
     dilution_scheme = [(int(vol_sample), 600 - int(vol_sample), "1/{}: {}uL sample + {}uL a.d.".format(step1_dilution_factor, int(vol_sample), 600 - int(vol_sample)))]
 
 
-    if vol_sample == 30:
+    if vol_sample == '30':
         
         # Step 2 Dilution  
-        step2_dilution_factor = 50
+        step2_dilution_factor = int(50)
 
         vol_prev_dilution = int(total_volume)/int(step2_dilution_factor)
+        print(F"step 2 dilution factor = {step2_dilution_factor}")
 
         vol_diluent = int(total_volume) - int(vol_prev_dilution)
+        print(F"volume diluent = {vol_diluent} : {total_volume} - {vol_prev_dilution}")
 
-        instruction = "1/{}: {}uL prev. dilution + {}uL a.d.".format(step2_dilution_factor, int(total_volume)/int(step2_dilution_factor), int(total_volume) - int(vol_prev_dilution))
+        instruction = "1/{}: {}uL prev. dilution + {}uL a.d.".format(step2_dilution_factor, vol_prev_dilution, vol_diluent)
         dilution_scheme.append((vol_prev_dilution, vol_diluent, instruction))
 
         # Step 3 Dilution  
-        step3_dilution_factor = 100
+        step3_dilution_factor = int(100)
 
         vol_prev_dilution = int(total_volume)/int(step3_dilution_factor)
 
@@ -104,7 +106,7 @@ elif assay == 'Y77':
                         writer.writerow(["Step {}".format(i+1), step[2], step2_dilution_factor * step3_dilution_factor])
                     else:
                         writer.writerow(["Step {}".format(i+1), step[2], step2_dilution_factor * step3_dilution_factor])
-    elif vol_sample ==60:
+    elif vol_sample =='60':
          # Step 2 Dilution  
         step2_dilution_factor = 100
 
@@ -130,6 +132,7 @@ elif assay == 'Y77':
                         writer.writerow(["Step {}".format(i+1), step[2], step1_dilution_factor * step2_dilution_factor])
          
     else: 
+        print(f"\n *********************************************************\n ATTENTION : \n ----------------------------------------------------------  \n THIS DILUTION SCHEME IS MOST LIKELY NOT ACCURATE!!! \n 30 OR 60 uL WERE NOT ENTERED FOR SAMPLE VOLUME! \n OTHER VALUES ARE NOT SUPPORTED AT THIS TIME. \n PLEASE CHECK YOUR WORK AND TRY AGAIN!!! \n ********************************************************* ")
          # Create dilution scheme list
         step1_dilution_factor = int(total_volume)/int(vol_sample)
         dilution_scheme = [(int(vol_sample), 600 - int(vol_sample), "1/{}: {}uL sample + {}uL a.d.".format(step1_dilution_factor, int(vol_sample), 600 - int(vol_sample)))]
@@ -137,13 +140,13 @@ elif assay == 'Y77':
 
         # Step 2 Dilution  
         step2_dilution_factor = (int(dilution_factor)/int(step1_dilution_factor))/2
-        print(F"step2 dilution factor = {step2_dilution_factor}, {dilution_factor}/{step1_dilution_factor}")
+    
 
         vol_prev_dilution = int(total_volume)/int(step2_dilution_factor)
-        print(F" vol_prev_dilution = {vol_prev_dilution}, {total_volume}/{step2_dilution_factor}")
+
 
         vol_diluent = int(total_volume) - int(vol_prev_dilution)
-        print(F"vol_diluent = {vol_diluent}, {total_volume, vol_prev_dilution}")
+
 
         instruction = "1/{}: {}uL prev. dilution + {}uL a.d.".format(step2_dilution_factor, int(total_volume)/int(step2_dilution_factor), int(total_volume) - int(vol_prev_dilution))
         dilution_scheme.append((vol_prev_dilution, vol_diluent, instruction))
