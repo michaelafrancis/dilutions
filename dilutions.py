@@ -73,10 +73,10 @@ elif assay == 'Y77':
         step2_dilution_factor = int(50)
 
         vol_prev_dilution = int(total_volume)/int(step2_dilution_factor)
-        print(F"step 2 dilution factor = {step2_dilution_factor}")
+    
 
         vol_diluent = int(total_volume) - int(vol_prev_dilution)
-        print(F"volume diluent = {vol_diluent} : {total_volume} - {vol_prev_dilution}")
+
 
         instruction = "1/{}: {}uL prev. dilution + {}uL a.d.".format(step2_dilution_factor, vol_prev_dilution, vol_diluent)
         dilution_scheme.append((vol_prev_dilution, vol_diluent, instruction))
@@ -89,7 +89,7 @@ elif assay == 'Y77':
 
         vol_diluent = int(total_volume) - int(vol_prev_dilution)
 
-        instruction = "1/{}: {}uL prev. dilution + {}uL a.d.".format(step2_dilution_factor, int(total_volume)/int(step2_dilution_factor), int(total_volume) - int(vol_prev_dilution))
+        instruction = "1/{}: {}uL prev. dilution + {}uL a.d.".format(step3_dilution_factor, vol_prev_dilution, vol_diluent)
         dilution_scheme.append((vol_prev_dilution, vol_diluent, instruction))
 
 
