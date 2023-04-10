@@ -103,9 +103,9 @@ elif assay == 'Y77':
                     elif i == 1:
                         writer.writerow(["Step {}".format(i+1), step[2], step1_dilution_factor * step2_dilution_factor])
                     elif i == 2:
-                        writer.writerow(["Step {}".format(i+1), step[2], step2_dilution_factor * step3_dilution_factor])
+                        writer.writerow(["Step {}".format(i+1), step[2], step1_dilution_factor*step2_dilution_factor * step3_dilution_factor])
                     else:
-                        writer.writerow(["Step {}".format(i+1), step[2], step2_dilution_factor * step3_dilution_factor])
+                        writer.writerow(["Step {}".format(i+1), step[2], step1_dilution_factor*step2_dilution_factor * step3_dilution_factor])
     elif vol_sample =='60':
          # Step 2 Dilution  
         step2_dilution_factor = 100
