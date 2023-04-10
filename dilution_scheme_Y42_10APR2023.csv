@@ -1,0 +1,5 @@
+Step #,Instructions,Dilution Factor
+Step 1,1/60.0: 10uL sample + 590uL a.d.,60.0
+Step 2,1/100.0: 6.0uL prev. dilution + 594uL a.d.,6000.0
+Step 3,1/2 Serial Dilution: 300uL prev. dilution + 300uL a.d.,12000.0
+Step 4,"replicates = 2, 300uL each",12000.0
